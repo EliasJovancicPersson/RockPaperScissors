@@ -1,3 +1,8 @@
+let playerScore = 0;
+let computerScore = 0;
+let rounds = 5;
+let currentRound = 0;
+
 function GetComputerChoice(){
     let randomNuber = Math.floor(Math.random() * 3);
     if(randomNuber === 0){
@@ -27,28 +32,35 @@ function PlayerSelection(){
 function CheckWinner(playerSel,computerSel){
 
     if(playerSel === computerSel){
+        currentRound--
+        console.log("Tie");
         return "Tie";
     }
-    else if(playerSel === "rock" && computerSel === "paper"){
-        return "Computer wins!";
+    else if(playerSel === "rock" && computerSel === "paper" || playerSel === "paper" && computerSel === "scissors" || playerSel === "scissors" && computerSel === "rock"){
+
+        return computerScore++;
     }
-    else if(playerSel === "paper" && computerSel === "scissors"){
-        return "Computer wins!";
-    }
-    else if(playerSel === "scissors" && computerSel === "rock"){
-        return "Computer wins!";
-    }
-    else if(playerSel === "rock" && computerSel === "scissors"){
-        return "Player wins!";
-    }
-    else if(playerSel === "paper" && computerSel === "rock"){
-        return "Player wins!";
-    }
-    else if(playerSel === "scissors" && computerSel === "paper"){
-        return "Player wins!";
+    else if(playerSel === "rock" && computerSel === "scissors" || playerSel === "scissors" && computerSel === "paper" || playerSel === "paper" && computerSel === "rock"){
+
+        return playerScore++;
     }
 }
 
-console.log(CheckWinner(PlayerSelection(),GetComputerChoice()));
+function GameLogic(){
+    for (currentRound; currentRound < rounds; currentRound++) {
+        CheckWinner(PlayerSelection(),GetComputerChoice());
+        console.log(playerScore + " player score " + computerScore + " computer score");
+    }
+    if(playerScore > computerScore){
+        console.log("Player won most rounds with a " + (playerScore - computerScore) + " point lead");
+    }
+    else{
+        console.log("computer won most rounds with a " + (computerScore - playerScore) + " point lead");
+    }
+}
+
+GameLogic();
+
+
 
 
