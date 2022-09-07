@@ -49,10 +49,6 @@ function CheckWinner(playerSel,computerSel){
     }
 }
 
-
-
-
-
 console.log(CheckWinner(PlayerSelection(),GetComputerChoice()));
 
 
