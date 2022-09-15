@@ -1,25 +1,26 @@
 let playerScore = 0;
 let computerScore = 0;
-let rounds = 5;
-let currentRound = 0;
 
 function GetComputerChoice(){
     let randomNuber = Math.floor(Math.random() * 3);
     if(randomNuber === 0){
+        console.log("rock");
         return "rock";
     }
     else if(randomNuber === 1){
+        console.log("paper")
         return "paper";
     }
     else
     {
+        console.log("scissors");
         return "scissors"
     }
 }
 
-function PlayerSelection(){
-    let input = prompt("Rock, Paper or Scissors?").toLowerCase();
+function PlayerSelection(input){
     if(input === "rock" || input === "paper" || input === "scissors"){
+        console.log(input);
         return input;
     }
     else
@@ -32,34 +33,57 @@ function PlayerSelection(){
 function CheckWinner(playerSel,computerSel){
 
     if(playerSel === computerSel){
-        currentRound--
         console.log("Tie");
         return "Tie";
     }
     else if(playerSel === "rock" && computerSel === "paper" || playerSel === "paper" && computerSel === "scissors" || playerSel === "scissors" && computerSel === "rock"){
-
+        console.log("computer won ");
         return computerScore++;
     }
     else if(playerSel === "rock" && computerSel === "scissors" || playerSel === "scissors" && computerSel === "paper" || playerSel === "paper" && computerSel === "rock"){
-
+        console.log("Player won ");
         return playerScore++;
     }
 }
 
-function GameLogic(){
-    for (currentRound; currentRound < rounds; currentRound++) {
-        CheckWinner(PlayerSelection(),GetComputerChoice());
-        console.log(playerScore + " player score " + computerScore + " computer score");
+function CheckGameOver() {
+    if (computerScore > 4) {
+        const p = document.createElement('p')
+        p.textContent = "Computer won"
+        p.setAttribute('style',"justify-self: center;align-self: center;")
+        resultsDiv.appendChild(p)
     }
-    if(playerScore > computerScore){
-        console.log("Player won most rounds with a " + (playerScore - computerScore) + " point lead");
-    }
-    else{
-        console.log("computer won most rounds with a " + (computerScore - playerScore) + " point lead");
+    else if (playerScore > 4) {
+        const p = document.createElement('p')
+        p.textContent = "Player won"
+        p.setAttribute('style',"justify-self: center;align-self: center;")
+        resultsDiv.appendChild(p)
     }
 }
 
-GameLogic();
+function PlayRound(sel) {
+    CheckWinner(PlayerSelection(sel), GetComputerChoice());
+    CheckGameOver();
+}
+
+const rock = document.querySelector('#rock');
+const paper = document.querySelector('#paper');
+const scissors = document.querySelector('#scissors');
+const resultsDiv = document.querySelector("#results");
+
+rock.addEventListener('click', function () {
+    PlayRound("rock");
+});
+paper.addEventListener('click', function () {
+    PlayRound("paper");
+});
+scissors.addEventListener('click', function (){
+    PlayRound("scissors");
+});
+
+
+
+
 
 
 
