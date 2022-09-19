@@ -13,10 +13,17 @@
 
 #results{
     display: flex;
+    flex-direction: column;
     width: 500px;
     height: 500px;
     border-style: solid;
     margin: 40px;
+    justify-content: center;
+}
+
+#choices{
+    display: flex;
+    border-style: solid;
     justify-content: center;
 }
 
