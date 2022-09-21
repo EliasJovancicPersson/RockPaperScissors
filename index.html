@@ -1,24 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Document</title>
-		<link rel="stylesheet" href="/index.css" />
-		<script src="/index.js" defer></script>
-	</head>
 
-	<body>
-		<div class="container">
-			<div id="results">
-				<div id="choices"></div>
+<head>
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Document</title>
+	<link rel="stylesheet" href="/index.css" />
+	<script src="/index.js" defer></script>
+</head>
+
+<body>
+	<div class="container">
+		<div id="results">
+			<div id="score">
+				<p class="player">Player score: 0</p>
+				<p class="computer">Computer score: 0</p>
 			</div>
-			<div class="playerInput">
-				<button id="rock">Rock</button>
-				<button id="paper">Paper</button>
-				<button id="scissors">Scissors</button>
+			<div id="choices">
+				<div id="player"></div>
+				<div id="computer"></div>
 			</div>
 		</div>
-	</body>
+		<div class="playerInput">
+			<button id="rock">Rock</button>
+			<button id="paper">Paper</button>
+			<button id="scissors">Scissors</button>
+		</div>
+	</div>
+</body>
+
 </html>
